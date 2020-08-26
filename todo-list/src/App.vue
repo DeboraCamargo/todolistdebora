@@ -1,32 +1,32 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar app color="primary" dark>
+      <v-toolbar-title>Debora Barbosa Silva Camargo</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn text rounded @click="toggleTheme">Toggle theme</v-btn>
+    </v-app-bar>
+    <hello-world/>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import HelloWorld from './components/HelloWorld';
 
-#nav {
-  padding: 30px;
+export default {
+  name: 'App',
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  components: {
+    HelloWorld,
+  },
 
-    &.router-link-exact-active {
-      color: #42b983;
+  data: () => ({
+  }),
+  methods: {
+    toggleTheme() {
+      this.$vuetify.theme.themes.dark.anchor = '#41B883'
+      // this.$vuetify.theme.themes.dark = !this.$vuetify.theme.themes.dark
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
     }
   }
-}
-</style>
+};
+</script>
